@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "pcd_logo_img_white.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
