@@ -10,6 +10,8 @@ import SwiftUI
 
 @main
 struct PCDApp: App {
+    @StateObject private var appState = AppState()
+
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -23,9 +25,8 @@ struct PCDApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                OnboardingView()
-            }
+            RootView()
+                .environmentObject(appState)
         }
     }
 }

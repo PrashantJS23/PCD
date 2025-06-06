@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "title": "System Maintenance",
+    "description": "We will be performing scheduled maintenance on June 10 from 1:00 AM to 3:00 AM UTC. During this period, the platform may be temporarily unavailable. We recommend saving your work beforehand to avoid data loss.",
+    "createdAt": "2025-06-01T09:00:00Z",
+    "link": "https://cdn.example.com/files/system-maintenance.pdf",
+    "isActive": true,
+    "type": "Maintenance"
+  },
+  {
+    "id": 2,
+    "title": "New Feature Release: Smart Dashboard",
+    "description": "We are excited to introduce our new Smart Dashboard! This feature brings enhanced analytics, real-time graphs, and AI-powered insights directly to your fingertips. For a detailed guide, please refer to the attached PDF or visit our Help Center.",
+    "createdAt": "2025-05-28T14:30:00Z",
+    "link": "https://cdn.example.com/files/smart-dashboard-guide.pdf",
+    "isActive": true,
+    "type": "Update"
+  },
+  {
+    "id": 3,
+    "title": "Holiday Support Schedule",
+    "description": "Our support and customer service teams will be offline during the Independence Day holiday on July 4. Normal operations will resume on July 5. Please consult the support schedule document for detailed availability.",
+    "createdAt": "2025-06-03T08:15:00Z",
+    "link": "https://cdn.example.com/files/holiday-support-schedule.pdf",
+    "isActive": false,
+    "type": "Notice"
+  },
+  {
+    "id": 4,
+    "title": "Policy Update - Terms of Service",
+    "description": "We’ve updated our Terms of Service effective July 1. These changes reflect our commitment to privacy and data protection. Please take a moment to read the updated policy in full.",
+    "createdAt": "2025-06-04T11:45:00Z",
+    "link": "https://cdn.example.com/files/terms-of-service-update.pdf",
+    "isActive": true,
+    "type": "Policy"
+  },
+  {
+    "id": 5,
+    "title": "Weekly Downtime Report",
+    "description": "The downtime report for last week is now available. Please review the performance metrics and incident summaries.",
+    "createdAt": "2025-06-02T10:00:00Z",
+    "link": "https://cdn.example.com/files/weekly-downtime-report.pdf",
+    "isActive": true,
+    "type": "Report"
+  },
+  {
+    "id": 6,
+    "title": "Mobile App Version 5.2 Released",
+    "description": "Version 5.2 of the mobile app is now live on both iOS and Android. It includes critical bug fixes, improved push notifications, and performance enhancements.",
+    "createdAt": "2025-05-30T07:50:00Z",
+    "link": "https://cdn.example.com/files/mobile-app-v5.2-release-notes.pdf",
+    "isActive": true,
+    "type": "Update"
+  },
+  {
+    "id": 7,
+    "title": "Security Advisory - Phishing Alert",
+    "description": "We’ve identified a phishing campaign impersonating our platform. Please do not click on links from suspicious emails. For your safety, review our security best practices in the attached advisory.",
+    "createdAt": "2025-05-25T13:25:00Z",
+    "link": "https://cdn.example.com/files/phishing-alert-advisory.pdf",
+    "isActive": false,
+    "type": "Security"
+  },
+  {
+    "id": 8,
+    "title": "Employee Spotlight: May 2025",
+    "description": "This month we recognize Sarah Patel from the Customer Success team for her outstanding work in onboarding new clients and improving user satisfaction scores. Congratulations, Sarah!",
+    "createdAt": "2025-05-31T16:40:00Z",
+    "link": "https://cdn.example.com/files/employee-spotlight-may.pdf",
+    "isActive": true,
+    "type": "Announcement"
+  },
+  {
+    "id": 9,
+    "title": "Q2 Performance Review",
+    "description": "Attached is the performance review for Q2 2025. It includes business KPIs, revenue growth metrics, and team highlights. A town hall meeting will be held next week to discuss these results in detail.",
+    "createdAt": "2025-06-05T12:00:00Z",
+    "link": "https://cdn.example.com/files/q2-2025-performance-review.pdf",
+    "isActive": true,
+    "type": "Report"
+  },
+  {
+    "id": 10,
+    "title": "Upcoming Webinars in June",
+    "description": "Join us for our series of product and training webinars throughout June. Topics include automation workflows, analytics tips, and customer success strategies. Full schedule and registration details are in the PDF.",
+    "createdAt": "2025-06-01T18:00:00Z",
+    "link": "https://cdn.example.com/files/june-2025-webinars.pdf",
+    "isActive": true,
+    "type": "Event"
+  }
+]
+

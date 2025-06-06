@@ -14,4 +14,7 @@ enum AppColors {
     static let textPrimary = Color.white
     static let textSecondary = Color.white.opacity(0.75)
     static let navBarBackground = UIColor(red: 28 / 255, green: 50 / 255, blue: 90 / 255, alpha: 0.80)
+    static let cardBackground = Color(red: 8/255, green: 23/255, blue: 54/255) // dark blue-ish card bg
+    static let accentYellow = Color(red: 255/255, green: 204/255, blue: 77/255)
+    static let shadowColor = Color.black.opacity(0.3)
 }

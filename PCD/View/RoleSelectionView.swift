@@ -10,7 +10,7 @@ import SwiftUI
 struct RoleSelectionView: View {
     @State private var selectedRole: String? = nil
     @State private var animateContent = false
-    
+    @State private var navigateToLogin = false
     let roles = [
         (title: "TNB Staff", imageName: SystemImages.personBadgeCheckmark),
         (title: "Vendor/External", imageName: SystemImages.person),
@@ -18,11 +18,11 @@ struct RoleSelectionView: View {
     
     var body: some View {
         GradientBackgroundView {
-            VStack(spacing: AppSpacing.large) {
+            VStack(spacing: AppSpacing.huge) {
                 LogosView()
-                Spacer()
+                Spacer(minLength: 0)
                 
-                VStack(spacing: AppSpacing.large) {
+                VStack(spacing: AppSpacing.huge) {
                     Text(Strings.selectRoleTitle)
                         .font(Fonts.label)
                         .foregroundColor(AppColors.textPrimary)
@@ -31,10 +31,16 @@ struct RoleSelectionView: View {
                         .animation(AppAnimation.delayed(0.1), value: animateContent)
                     
                     roleGrid
-                    continueButton
+                    PrimaryButton(title: Strings.continueButton) {
+                        navigateToLogin = true
+                    }
+                    .disabled(selectedRole == nil)
+                    .opacity(selectedRole != nil ? 1.0 : 0.6)
+                    .padding(.horizontal)
                 }
+                .offset(y: -40)
                 
-                Spacer()
+                Spacer(minLength: 0)
             }
             .safeAreaPadding()
         }
@@ -42,6 +48,9 @@ struct RoleSelectionView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear {
             animateContent = true
+        }
+        .navigationDestination(isPresented: $navigateToLogin) {
+            LoginView(selectedRole: selectedRole ?? "")
         }
     }
     
@@ -70,27 +79,6 @@ struct RoleSelectionView: View {
         .opacity(animateContent ? 1 : 0)
         .offset(y: animateContent ? 0 : 20)
         .animation(AppAnimation.delayed(0.2), value: animateContent)
-    }
-    
-    private var continueButton: some View {
-        NavigationLink(destination: LoginView(selectedRole: selectedRole ?? "")) {
-            HStack {
-                Text(Strings.continueButton)
-                    .font(Fonts.button)
-                Image(systemName: SystemImages.chevronRight)
-            }
-            .foregroundColor(AppColors.buttonForeground)
-            .frame(maxWidth: .infinity, maxHeight: AppSizes.buttonHeight)
-            .background(selectedRole != nil ? AppColors.buttonBackground : AppColors.buttonBackground.opacity(0.5))
-            .opacity(selectedRole != nil ? 1 : 0.6)
-            .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
-            .scaleEffect(selectedRole != nil ? 1 : 0.98)
-            .animation(.easeInOut(duration: 0.3), value: selectedRole)
-        }
-        .disabled(selectedRole == nil)
-        .accessibilityLabel("Continue button")
-        .accessibilityHint(selectedRole == nil ? "Disabled until role is selected" : "Proceed to login")
-        .padding(.horizontal)
     }
 }
 

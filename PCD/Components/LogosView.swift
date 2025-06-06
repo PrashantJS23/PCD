@@ -12,7 +12,7 @@ struct LogosView: View {
     @State private var animateLogos = false
     var body: some View {
         HStack(spacing: 24) {
-            Image(Images.pcdLogoGreen)
+            Image(AssetImages.pcdLogoGreen)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 25)
@@ -20,7 +20,7 @@ struct LogosView: View {
                 .offset(y: animateLogos ? 0 : -20)
                 .animation(.easeOut(duration: 0.6).delay(0.2), value: animateLogos)
 
-            Image(Images.tnbLogo)
+            Image(AssetImages.tnbLogo)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 60)

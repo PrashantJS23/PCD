@@ -6,51 +6,50 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct LoginView: View {
+    @EnvironmentObject var appState: AppState
     @Environment(\.dismiss) private var dismiss
-    var selectedRole: String
-
+    @StateObject private var viewModel = LoginViewModel()
     @State private var showPassword = false
-    @State private var rememberMe = false
     @State private var animateContent = false
     @State private var animateButton = false
+
+    var selectedRole: String
+
+    init(selectedRole: String) {
+        self.selectedRole = selectedRole
+    }
 
     var body: some View {
         GradientBackgroundView {
             VStack(spacing: AppSpacing.medium) {
                 LogosView()
                 Spacer()
-
                 LoginHeaderView(
                     title: Strings.loginTitle,
                     subtitle: Strings.loginSubtitle + selectedRole,
                     animate: animateContent
                 )
-
                 LoginTextFieldsView(
+                    username: $viewModel.username,
+                    password: $viewModel.password,
                     showPassword: $showPassword,
                     animate: animateContent
                 )
-
                 VStack(spacing: AppSpacing.medium) {
-                    Toggle(Strings.rememberMe, isOn: $rememberMe)
+                    Toggle(Strings.rememberMe, isOn: $viewModel.rememberMe)
                         .toggleStyle(CheckboxToggleStyle())
                         .opacity(animateContent ? 1 : 0)
                         .animation(AppAnimation.delayed(0.8), value: animateContent)
 
-                    Button(action: {}) {
-                        Text(Strings.loginButton)
-                            .font(Fonts.button)
-                            .frame(maxWidth: .infinity, maxHeight: AppSizes.buttonHeight)
-                            .background(AppColors.buttonBackground)
-                            .foregroundColor(AppColors.buttonForeground)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                            .scaleEffect(animateButton ? 1 : 0.95)
-                            .opacity(animateButton ? 1 : 0)
-                            .animation(AppAnimation.base, value: animateButton)
+                    PrimaryButton(title: Strings.loginButton, animate: animateButton) {
+                        viewModel.validateAndLogin {
+                            appState.isLoggedIn = true
+                        }
                     }
-
+                
                     Button(action: { dismiss() }) {
                         Text(Strings.notYourRoleButton)
                             .font(Fonts.label)
@@ -59,14 +58,13 @@ struct LoginView: View {
                     .opacity(animateContent ? 1 : 0)
                     .animation(AppAnimation.delayed(1.0), value: animateContent)
                 }
-
                 Spacer()
-
                 LoginFooterLinksView(animate: animateContent)
             }
             .padding(.horizontal)
             .safeAreaPadding()
         }
+        .loadingOverlay(viewModel.isLoading)
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .onAppear {
@@ -75,12 +73,18 @@ struct LoginView: View {
                 animateButton = true
             }
         }
+        .onDisappear {
+            viewModel.showValidationError = false
+        }
+        .showBanner(isPresented: $viewModel.showValidationError, message: viewModel.errorMessage, type: .error)
     }
 }
+
 
 #Preview {
     NavigationStack {
         LoginView(selectedRole: "Vendor/External")
+            .environmentObject(AppState())
     }
 }
 
@@ -88,7 +92,7 @@ struct LoginHeaderView: View {
     var title: String
     var subtitle: String
     var animate: Bool
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.small) {
             Text(title)
@@ -96,7 +100,7 @@ struct LoginHeaderView: View {
                 .foregroundColor(AppColors.textPrimary)
                 .opacity(animate ? 1 : 0)
                 .animation(AppAnimation.base, value: animate)
-
+            
             Text(subtitle)
                 .font(Fonts.label)
                 .foregroundColor(AppColors.textSecondary)
@@ -107,35 +111,9 @@ struct LoginHeaderView: View {
     }
 }
 
-struct LoginTextFieldsView: View {
-    @Binding var showPassword: Bool
-    var animate: Bool
-
-    var body: some View {
-        VStack(spacing: AppSpacing.small) {
-            CustomTextField(
-                placeholder: Strings.usernamePlaceholder,
-                prefixIcon: SystemImages.personFill
-            )
-            .opacity(animate ? 1 : 0)
-            .animation(AppAnimation.delayed(0.4), value: animate)
-
-            CustomTextField(
-                placeholder: Strings.passwordPlaceholder,
-                isSecureTextEntry: !showPassword,
-                prefixIcon: SystemImages.lockFill,
-                suffixIcon: showPassword ? SystemImages.eyeFill : SystemImages.eyeSlashFill,
-                onSuffixTap: { showPassword.toggle() }
-            )
-            .opacity(animate ? 1 : 0)
-            .animation(AppAnimation.delayed(0.6), value: animate)
-        }
-    }
-}
-
 struct LoginFooterLinksView: View {
     var animate: Bool
-
+    
     var body: some View {
         VStack(spacing: AppSpacing.small) {
             NavigationLink(destination: AnnouncementView()) {
@@ -148,7 +126,7 @@ struct LoginFooterLinksView: View {
                         .underline()
                 }
             }
-
+            
             NavigationLink(destination: RegistrationInstructionView()) {
                 HStack(spacing: AppSpacing.tiny) {
                     Image(systemName: SystemImages.personCropCircleBadgeCheckmark)

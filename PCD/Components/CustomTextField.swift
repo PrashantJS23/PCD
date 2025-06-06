@@ -10,7 +10,7 @@ import SwiftUI
 
 // Custom Text Field Component
 struct CustomTextField: View {
-    @State private var text = ""
+    @Binding var text: String
     var placeholder: String
     var isSecureTextEntry: Bool = false
     var prefixIcon: String? = nil
@@ -63,9 +63,17 @@ struct CustomTextField: View {
     }
 }
 
-#Preview {
-    CustomTextField(
-        placeholder: Strings.usernamePlaceholder,
-        prefixIcon: SystemImages.personFill
-    )
+struct CustomTextField_Previews: PreviewProvider {
+    @State static var username = ""
+
+    static var previews: some View {
+        CustomTextField(
+            text: $username,
+            placeholder: "Username",
+            prefixIcon: "person.fill"
+        )
+        .padding()
+        .background(Color.black)
+        .previewLayout(.sizeThatFits)
+    }
 }

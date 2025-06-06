@@ -9,14 +9,14 @@ import SwiftUI
 
 struct OnboardingView: View {
     @State private var animateContent = false
-
+    @State private var navigateToRole = false
     var body: some View {
         GradientBackgroundView {
             VStack(spacing: AppSpacing.medium) {
                 LogosView()
                 Spacer()
 
-                Image(Images.onboardingAsset)
+                Image(AssetImages.onboardingAsset)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: .infinity, maxHeight: AppSizes.onboardingImageHeight)
@@ -42,14 +42,8 @@ struct OnboardingView: View {
                 .offset(y: animateContent ? 0 : 20)
                 .animation(AppAnimation.delayed(0.3), value: animateContent)
 
-                NavigationLink(destination: RoleSelectionView()) {
-                    Text(Strings.getStartedButton)
-                        .font(Fonts.button)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(AppColors.buttonBackground)
-                        .foregroundColor(AppColors.buttonForeground)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                PrimaryButton(title: Strings.getStartedButton) {
+                    navigateToRole = true
                 }
                 .padding(.horizontal)
                 .padding(.top, AppSpacing.small)
@@ -66,6 +60,9 @@ struct OnboardingView: View {
                     .animation(AppAnimation.delayed(0.9), value: animateContent)
             }
             .safeAreaPadding()
+            .navigationDestination(isPresented: $navigateToRole) {
+                RoleSelectionView()
+            }
         }
         .navigationBarHidden(true)
         .onAppear {
