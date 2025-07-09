@@ -16,17 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # If you use CocoaPods, install pods here:
-      - name: Install CocoaPods
-        run: |
-          sudo gem install cocoapods
-          pod install
-
-      # Or if you use Swift Package Manager, no need for pod install
-
       - name: Build and test
         run: |
-          xcodebuild -workspace YourWorkspace.xcworkspace \
+          xcodebuild -project YourProject.xcodeproj \
           -scheme YourScheme \
           -sdk iphonesimulator \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
