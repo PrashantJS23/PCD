@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: iOS CI
 
 on:
   push:
@@ -10,20 +10,25 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+      # If you use CocoaPods, install pods here:
+      - name: Install CocoaPods
+        run: |
+          sudo gem install cocoapods
+          pod install
 
-      - name: Install dependencies
-        run: npm install
+      # Or if you use Swift Package Manager, no need for pod install
 
-      - name: Run tests
-        run: npm test
+      - name: Build and test
+        run: |
+          xcodebuild -workspace YourWorkspace.xcworkspace \
+          -scheme YourScheme \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
+          clean build test
 
