@@ -12,6 +12,7 @@ struct BannerModifier: ViewModifier {
     var message: String
     var duration: TimeInterval = 3.0
     var type: BannerType
+    @State private var hasScheduledDismissal = false
     func body(content: Content) -> some View {
         ZStack(alignment: .top) {
             content
@@ -26,19 +27,17 @@ struct BannerModifier: ViewModifier {
                 .padding(.top, 8)
                 .zIndex(1)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-                        withAnimation {
-                            isPresented = false
+                    if !hasScheduledDismissal {
+                        hasScheduledDismissal = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                            withAnimation {
+                                isPresented = false
+                                hasScheduledDismissal = false
+                            }
                         }
                     }
                 }
             }
         }
-    }
-}
-
-extension View {
-    func showBanner(isPresented: Binding<Bool>, message: String, type: BannerType = .success, duration: TimeInterval = 3.0) -> some View {
-        self.modifier(BannerModifier(isPresented: isPresented, message: message, duration: duration, type: type))
     }
 }

@@ -23,7 +23,7 @@ struct SideMenu: View {
                            height: AppSizes.sideMenuProfileImageSize)
                     .foregroundColor(.white)
 
-                Text(Strings.sideMenuGreetingText)
+                Text(AppText.sideMenuGreetingText)
                     .font(.headline)
                     .foregroundColor(.white)
             }
@@ -71,7 +71,7 @@ struct SideMenu: View {
                                    height: AppSizes.sideMenuIconSize)
                             .foregroundColor(.yellow)
 
-                        Text(Strings.logoutButton)
+                        Text(AppText.logoutButton)
                             .font(.headline)
                             .foregroundColor(.yellow)
                     }

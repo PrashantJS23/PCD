@@ -23,15 +23,15 @@ struct RoleSelectionView: View {
                 Spacer(minLength: 0)
                 
                 VStack(spacing: AppSpacing.huge) {
-                    Text(Strings.selectRoleTitle)
+                    Text(AppText.selectRoleTitle)
                         .font(Fonts.label)
-                        .foregroundColor(AppColors.textPrimary)
+                        .foregroundColor(AppColors.textPrimaryDark)
                         .opacity(animateContent ? 1 : 0)
                         .offset(y: animateContent ? 0 : 20)
                         .animation(AppAnimation.delayed(0.1), value: animateContent)
                     
                     roleGrid
-                    PrimaryButton(title: Strings.continueButton) {
+                    PrimaryButton(title: AppText.continueButton) {
                         navigateToLogin = true
                     }
                     .disabled(selectedRole == nil)

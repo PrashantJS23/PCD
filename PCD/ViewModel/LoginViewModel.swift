@@ -22,7 +22,7 @@ class LoginViewModel: ObservableObject {
         let passwordTrimmed = password.trimmingCharacters(in: .whitespacesAndNewlines)
 
         guard !usernameTrimmed.isEmpty, !passwordTrimmed.isEmpty else {
-            showError(Strings.allFieldsRequiredMessage)
+            showError(AppText.allFieldsRequiredMessage)
             return
         }
 

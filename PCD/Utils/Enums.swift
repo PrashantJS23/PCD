@@ -6,6 +6,7 @@
 //
 
 // MARK: - Tab Enum
+
 enum Tab: String, CaseIterable {
     case home = "house"
     case tracking = "magnifyingglass"
@@ -18,4 +19,9 @@ enum Tab: String, CaseIterable {
         case .work: return "My Work"
         }
     }
+}
+
+enum TrackingOption: String, CaseIterable {
+    case nonSTO = "Non STO"
+    case freight = "Freight"
 }

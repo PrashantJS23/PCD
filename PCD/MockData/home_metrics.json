@@ -1,0 +1,51 @@
+[
+  {
+    "title": "Total Request",
+    "metrics": [
+      { "subtitle": "NON STO", "value": "147" },
+      { "subtitle": "Freight", "value": "37" }
+    ],
+    "cardColor": "indigo"
+  },
+  {
+    "title": "Pending Acceptance",
+    "metrics": [
+      { "subtitle": "NON STO", "value": "132" },
+      { "subtitle": "Freight", "value": "29" }
+    ],
+    "cardColor": "teal"
+  },
+  {
+    "title": "Pending BU",
+    "metrics": [
+      { "subtitle": "NON STO", "value": "118" },
+      { "subtitle": "Freight", "value": "44" }
+    ],
+    "cardColor": "crimson"
+  },
+  {
+    "title": "Pending Logistic PIC",
+    "metrics": [
+      { "subtitle": "NON STO", "value": "125" },
+      { "subtitle": "Freight", "value": "36" }
+    ],
+    "cardColor": "amber"
+  },
+  {
+    "title": "Pending Clerk",
+    "metrics": [
+      { "subtitle": "NON STO", "value": "139" },
+      { "subtitle": "Freight", "value": "41" }
+    ],
+    "cardColor": "slate"
+  },
+  {
+    "title": "Pending Vendor",
+    "metrics": [
+      { "subtitle": "NON STO", "value": "121" },
+      { "subtitle": "Freight", "value": "33" }
+    ],
+    "cardColor": "emerald"
+  }
+]
+

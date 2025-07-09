@@ -10,9 +10,33 @@
 		2DF5329E2DE6041B006411C5 /* PCD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2D5588342DF30A8300F7AB9A /* Exceptions for "PCD" folder in "PCD" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MockData/home_metrics.json,
+			);
+			target = 2DF5329D2DE6041B006411C5 /* PCD */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		2D5588352DF30A8300F7AB9A /* Exceptions for "PCD" folder in "Compile Sources" phase from "PCD" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 2DF5329A2DE6041B006411C5 /* Sources */;
+			membershipExceptions = (
+				MockData/home_metrics.json,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2DF532A02DE6041B006411C5 /* PCD */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2D5588342DF30A8300F7AB9A /* Exceptions for "PCD" folder in "PCD" target */,
+				2D5588352DF30A8300F7AB9A /* Exceptions for "PCD" folder in "Compile Sources" phase from "PCD" target */,
+			);
 			path = PCD;
 			sourceTree = "<group>";
 		};

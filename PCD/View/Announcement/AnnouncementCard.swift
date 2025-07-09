@@ -18,18 +18,18 @@ struct AnnouncementCard: View {
             HStack {
                 Text(announcement.title)
                     .font(.headline)
-                    .foregroundColor(AppColors.textPrimary)
+                    .foregroundColor(AppColors.textPrimaryDark)
                 
                 Spacer()
                 
                 if announcement.isActive {
-                    Text(Strings.newText)
+                    Text(AppText.newText)
                         .font(.subheadline)
                         .bold()
                         .padding(.horizontal, 6)
                         .padding(.vertical, 4)
                         .background(AppColors.accentYellow)
-                        .cornerRadius(6)
+                        .clipShape(RoundedRectangle(cornerRadius: AppRadius.extraSmall))
                         .foregroundColor(.black)
                         .scaleEffect(pulse ? 1.1 : 0.95)
                         .animation(
@@ -42,14 +42,14 @@ struct AnnouncementCard: View {
             
             Text(announcement.description)
                 .font(.subheadline)
-                .foregroundColor(AppColors.textSecondary)
+                .foregroundColor(AppColors.textSecondaryDark)
                 .lineLimit(isExpanded ? nil : 3)
                 .animation(.easeInOut, value: isExpanded)
         
             // Created At
-            Text("\(Strings.createdAtText) \(DateUtil.formatISO8601(announcement.createdAt, dateStyle: .long, timeStyle: .none))")
+            Text("\(AppText.createdAtText) \(DateUtil.formatISO8601(announcement.createdAt, dateStyle: .long, timeStyle: .none))")
                 .font(.caption2)
-                .foregroundColor(AppColors.textSecondary)
+                .foregroundColor(AppColors.textSecondaryDark)
             
             // Download Section
             VStack(spacing: AppSpacing.small) {
@@ -61,7 +61,7 @@ struct AnnouncementCard: View {
                             isExpanded.toggle()
                         }
                     }) {
-                        Text(isExpanded ? Strings.showLessButtonTitle : Strings.showMoreButtonTitle)
+                        Text(isExpanded ? AppText.showLessButtonTitle : AppText.showMoreButtonTitle)
                             .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(AppColors.accentYellow)
@@ -73,7 +73,7 @@ struct AnnouncementCard: View {
         }
         .padding()
         .background(AppColors.cardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .clipShape(RoundedRectangle(cornerRadius: AppRadius.medium))
         .shadow(color: AppColors.shadowColor, radius: 8, x: 0, y: 4)
         .opacity(isVisible ? 1 : 0)
         .offset(y: isVisible ? 0 : 20)

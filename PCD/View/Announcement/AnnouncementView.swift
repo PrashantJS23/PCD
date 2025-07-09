@@ -23,7 +23,7 @@ struct AnnouncementView: View {
                 .padding(.vertical)
             }
         }
-        .customNavigationBar(title: Strings.announcementScreenTitle) { dismiss() }
+        .customNavigationBar(title: AppText.announcementScreenTitle, isNotificationEnabled: true) { dismiss() }
         .errorOverlay(viewModel.errorMessage)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {

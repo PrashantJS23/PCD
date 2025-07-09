@@ -28,13 +28,13 @@ struct OnboardingView: View {
                 Spacer()
 
                 VStack(spacing: AppSpacing.small) {
-                    Text(Strings.onboardingWelcomeTitle)
+                    Text(AppText.onboardingWelcomeTitle)
                         .font(Fonts.title)
-                        .foregroundColor(AppColors.textPrimary)
+                        .foregroundColor(AppColors.textPrimaryDark)
                         .multilineTextAlignment(.center)
-                    Text(Strings.onboardingWelcomeSubtitle)
+                    Text(AppText.onboardingWelcomeSubtitle)
                         .font(Fonts.label)
-                        .foregroundColor(AppColors.textPrimary)
+                        .foregroundColor(AppColors.textPrimaryDark)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
                 }
@@ -42,7 +42,7 @@ struct OnboardingView: View {
                 .offset(y: animateContent ? 0 : 20)
                 .animation(AppAnimation.delayed(0.3), value: animateContent)
 
-                PrimaryButton(title: Strings.getStartedButton) {
+                PrimaryButton(title: AppText.getStartedButton) {
                     navigateToRole = true
                 }
                 .padding(.horizontal)
@@ -50,9 +50,9 @@ struct OnboardingView: View {
                 .opacity(animateContent ? 1 : 0)
                 .animation(AppAnimation.delayed(0.6), value: animateContent)
 
-                Text(Strings.onboardingDescription)
+                Text(AppText.onboardingDescription)
                     .font(Fonts.small)
-                    .foregroundColor(AppColors.textPrimary)
+                    .foregroundColor(AppColors.textPrimaryDark)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
                     .padding(.top, AppSpacing.small)

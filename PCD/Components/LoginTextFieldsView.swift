@@ -17,7 +17,7 @@ struct LoginTextFieldsView: View {
         VStack(spacing: AppSpacing.small) {
             CustomTextField(
                 text: $username,
-                placeholder: Strings.usernamePlaceholder,
+                placeholder: AppText.usernamePlaceholder,
                 prefixIcon: SystemImages.personFill
             )
             .opacity(animate ? 1 : 0)
@@ -25,10 +25,10 @@ struct LoginTextFieldsView: View {
 
             CustomTextField(
                 text: $password,
-                placeholder: Strings.passwordPlaceholder,
+                placeholder: AppText.passwordPlaceholder,
                 isSecureTextEntry: !showPassword,
                 prefixIcon: SystemImages.lockFill,
-                suffixIcon: showPassword ? SystemImages.eyeFill : SystemImages.eyeSlashFill,
+                suffixIcon: showPassword ? SystemImages.eyeSlashFill : SystemImages.eyeFill,
                 onSuffixTap: { showPassword.toggle() }
             )
             .opacity(animate ? 1 : 0)

@@ -29,7 +29,7 @@ struct RoleCard: View {
         }
         .frame(maxWidth: .infinity)
         .background(
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: AppRadius.small)
                 .fill(selected ? color1 : Color.gray.opacity(0.3))
                 .animation(.easeInOut(duration: 0.3), value: selected)
         )

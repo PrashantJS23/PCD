@@ -20,7 +20,7 @@ struct RegistrationInstructionView: View {
                 .padding(.vertical)
             }
         }
-        .customNavigationBar(title: Strings.vendorRegistrationInstructionScreenTitle) { dismiss() }
+        .customNavigationBar(title: AppText.vendorRegistrationInstructionScreenTitle, isNotificationEnabled: true) { dismiss() }
     }
 }
 

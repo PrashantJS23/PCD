@@ -16,7 +16,7 @@ struct VendorInstructionCard: View {
         VStack(alignment: .leading, spacing: 12) {
             Text(instruction.title)
                 .font(Fonts.label)
-                .foregroundColor(AppColors.textPrimary)
+                .foregroundColor(AppColors.textPrimaryDark)
                 .animation(.easeInOut, value: isVisible)
             
             if let urlString = instruction.urlString, let url = URL(string: urlString) {
@@ -25,7 +25,7 @@ struct VendorInstructionCard: View {
                 }) {
                     HStack(spacing: 6) {
                         Image(systemName: SystemImages.link)
-                        Text(Strings.viewInstructionButtonTitle)
+                        Text(AppText.viewInstructionButtonTitle)
                     }
                     .font(.subheadline)
                     .foregroundColor(AppColors.accentYellow)
@@ -37,7 +37,7 @@ struct VendorInstructionCard: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background(AppColors.cardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .clipShape(RoundedRectangle(cornerRadius: AppRadius.medium))
         .shadow(color: AppColors.shadowColor, radius: 8, x: 0, y: 4)
         .opacity(isVisible ? 1 : 0)
         .offset(y: isVisible ? 0 : 20)

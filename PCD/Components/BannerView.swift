@@ -54,7 +54,7 @@ struct BannerView: View {
         }
         .padding()
         .background(type.backgroundColor)
-        .cornerRadius(12)
+        .clipShape(RoundedRectangle(cornerRadius: AppRadius.smallMedium))
         .padding(.horizontal)
         .shadow(radius: 4)
         .transition(.move(edge: .top).combined(with: .opacity))

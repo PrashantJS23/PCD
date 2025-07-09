@@ -28,8 +28,8 @@ struct LoginView: View {
                 LogosView()
                 Spacer()
                 LoginHeaderView(
-                    title: Strings.loginTitle,
-                    subtitle: Strings.loginSubtitle + selectedRole,
+                    title: AppText.loginTitle,
+                    subtitle: AppText.loginSubtitle + selectedRole,
                     animate: animateContent
                 )
                 LoginTextFieldsView(
@@ -39,19 +39,19 @@ struct LoginView: View {
                     animate: animateContent
                 )
                 VStack(spacing: AppSpacing.medium) {
-                    Toggle(Strings.rememberMe, isOn: $viewModel.rememberMe)
+                    Toggle(AppText.rememberMe, isOn: $viewModel.rememberMe)
                         .toggleStyle(CheckboxToggleStyle())
                         .opacity(animateContent ? 1 : 0)
                         .animation(AppAnimation.delayed(0.8), value: animateContent)
 
-                    PrimaryButton(title: Strings.loginButton, animate: animateButton) {
+                    PrimaryButton(title: AppText.loginButton, animate: animateButton) {
                         viewModel.validateAndLogin {
                             appState.isLoggedIn = true
                         }
                     }
                 
                     Button(action: { dismiss() }) {
-                        Text(Strings.notYourRoleButton)
+                        Text(AppText.notYourRoleButton)
                             .font(Fonts.label)
                             .foregroundColor(.white)
                     }
@@ -97,13 +97,13 @@ struct LoginHeaderView: View {
         VStack(alignment: .leading, spacing: AppSpacing.small) {
             Text(title)
                 .font(Fonts.title)
-                .foregroundColor(AppColors.textPrimary)
+                .foregroundColor(AppColors.textPrimaryDark)
                 .opacity(animate ? 1 : 0)
                 .animation(AppAnimation.base, value: animate)
             
             Text(subtitle)
                 .font(Fonts.label)
-                .foregroundColor(AppColors.textSecondary)
+                .foregroundColor(AppColors.textSecondaryDark)
                 .opacity(animate ? 1 : 0)
                 .animation(AppAnimation.delayed(0.2), value: animate)
         }
@@ -120,7 +120,7 @@ struct LoginFooterLinksView: View {
                 HStack(spacing: AppSpacing.tiny) {
                     Image(systemName: SystemImages.bellBadgeFill)
                         .foregroundColor(.white)
-                    Text(Strings.viewAnnouncementTitle)
+                    Text(AppText.viewAnnouncementTitle)
                         .font(Fonts.label)
                         .foregroundColor(.white)
                         .underline()
@@ -131,7 +131,7 @@ struct LoginFooterLinksView: View {
                 HStack(spacing: AppSpacing.tiny) {
                     Image(systemName: SystemImages.personCropCircleBadgeCheckmark)
                         .foregroundColor(.white)
-                    Text(Strings.viewVendorRegistrationTitle)
+                    Text(AppText.viewVendorRegistrationTitle)
                         .font(Fonts.label)
                         .foregroundColor(.white)
                         .underline()

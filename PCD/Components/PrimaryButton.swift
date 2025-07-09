@@ -18,7 +18,7 @@ struct PrimaryButton: View {
                 .frame(maxWidth: .infinity, maxHeight: AppSizes.buttonHeight)
                 .background(AppColors.buttonBackground)
                 .foregroundColor(AppColors.buttonForeground)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipShape(RoundedRectangle(cornerRadius: AppRadius.small))
                 .scaleEffect(animate ? 1 : 0.95)
                 .opacity(animate ? 1 : 0)
                 .animation(AppAnimation.base, value: animate)
