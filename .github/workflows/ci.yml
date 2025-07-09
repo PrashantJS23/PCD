@@ -18,8 +18,8 @@ jobs:
 
       - name: Build and test
         run: |
-          xcodebuild -project YourProject.xcodeproj \
-          -scheme YourScheme \
+          xcodebuild -project PCD.xcodeproj \
+          -scheme PCD \
           -sdk iphonesimulator \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
           clean build test
